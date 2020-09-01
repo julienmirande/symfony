@@ -1,0 +1,29 @@
+abonne_index:
+    path:     /
+    defaults: { _controller: "MonBundle:Abonne:index" }
+    methods:  GET
+
+abonne_show:
+    path:     /{codeAbonne}/show
+    defaults: { _controller: "MonBundle:Abonne:show" }
+    methods:  GET
+
+abonne_new:
+    path:     /new
+    defaults: { _controller: "MonBundle:Abonne:new" }
+    methods:  [GET, POST]
+
+abonne_edit:
+    path:     /{codeAbonne}/edit
+    defaults: { _controller: "MonBundle:Abonne:edit" }
+    methods:  [GET, POST]
+
+abonne_delete:
+    path:     /{codeAbonne}/delete
+    defaults: { _controller: "MonBundle:Abonne:delete" }
+    methods:  DELETE
+
+abonne_panier:
+    path:     /{codeAbonne}/panier
+    defaults: { _controller: "MonBundle:Abonne:panier" }
+    methods: [GET, POST]

@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  {{ parent() }} - Index
+{% endblock %}
+
+
+  {% block content %}
+      <h2 class="titre"><strong>Bienvenue</strong>  sur notre site </h2>
+      <h3 class="sous-titre"> Vous y trouverez un large choix d'albums <br/> <br/>d'une grande variété de compositeurs. </h3>
+
+
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active" >
+      <img src="https://c1.staticflickr.com/6/5521/9275300389_dc85ab1079_b.jpg" style="margin:auto;"   width="800" alt="Chania">
+      <div class="carousel-caption">
+        <p>Découvrez des chefs-d'oeuvres de la musique!</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="http://barwonheadsfinemusic.org.au/wp-content/uploads/2016/11/music-1283851_1920-624x385.jpg" style="margin:auto;"   width="800" alt="Chicago">
+      <div class="carousel-caption">
+        <p>Vous aimez un instrument en particulier? Trouvez les albums où il est utilisé!</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Beethoven.jpg" style="margin:auto;"   width="450" height="800" alt="New York">
+      <div class="carousel-caption">
+        <p>Avec de nombreux compositeurs célèbres!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+  {% endblock %}

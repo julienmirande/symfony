@@ -1,0 +1,157 @@
+{% set alphabet = ['A','B','C','D','E','F','G','H','I','G','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'] %}
+{% set rubrique = ['Musicien','Orchestres','Instruments', 'Albums'] %}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>
+    {% block title %}Projet{% endblock %}
+  </title>
+
+  {% block stylesheets %}
+  <link rel="stylesheet" href="{{ asset('bundles/mon/css/mystyle.css') }}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+  <style>
+
+  .dropdown-submenu{position:relative;}
+  .dropdown-submenu>.dropdown-menu{top:0;left:100%;margin-top:-6px;margin-left:-1px;-webkit-border-radius:0 6px 6px 6px;-moz-border-radius:0 6px 6px 6px;border-radius:0 6px 6px 6px;}
+  .dropdown-submenu:hover>.dropdown-menu{display:block;}
+  .dropdown-submenu>a:after{display:block;content:" ";float:right;width:0;height:0;border-color:transparent;border-style:solid;border-width:5px 0 5px 5px;border-left-color:#cccccc;margin-top:5px;margin-right:-10px;}
+  .dropdown-submenu.pull-left{float:none;}.dropdown-submenu.pull-left>.dropdown-menu{left:-100%;margin-left:10px;-webkit-border-radius:6px 0 6px 6px;-moz-border-radius:6px 0 6px 6px;border-radius:6px 0 6px 6px;}
+  .blue{color:#1D38FC}
+  .green{color:#0EC929}
+  .red{color:#FF0000}
+  .orange{color:#ffe100}
+</style>
+{% endblock %}
+</head>
+
+<body class="fond">
+
+  <div class="header">
+    {% block header %}
+
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="{{ path("mon_accueil")}}">DISK EAU</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="{{ path("mon_accueil")}}">Accueil</a></li>
+          <li class="dropdown">
+            <a data-toggle="dropdown" href="#">Rechercher <span class="caret"></span></a>
+            <ul class="dropdown-menu  jqueryFadeIn">
+
+              {% for type in rubrique %}
+
+              <li class="dropdown-submenu">
+                <a data-toggle="dropdown"tabindex="-1" href="{{ path("musicien_index")}}"><span class="fa fa-cogs"></span> {{type}}</a>
+                <ul class="dropdown-menu">
+                  {% for letter in alphabet %}
+                  <li><a href="{{ path( type,{'letter': letter})}}"><span class="fa fa-bar-chart-o"></span>{{letter}}</a></li>
+                  {% endfor %}
+                </ul>
+              </li>
+              {% endfor %}
+            </ul>
+          </li>
+          <li><a href="{{ path("mon_apropos")}}">A propos</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          {% if (app.user == null) %}
+          <li><a href="{{ path("abonne_new")}}"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
+          <li><a href="{{ path("login")}}"><span class="glyphicon glyphicon-log-in"></span> Se connecter</a></li>
+          {% else %}
+
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">{{app.user.username}} <span class="caret"></span></a>
+            <ul class="dropdown-menu jqueryFadeIn">
+              <li><a href="{{ path('abonne_show',{'codeAbonne': app.user.codeAbonne})}}">Profil</a></li>
+              <li><a href="{{ path('abonne_panier',{'codeAbonne': app.user.codeAbonne}) }}">Mon panier</a></li>
+            </ul>
+
+
+            <li><a href="{{ path("logout")}}"><span class="glyphicon glyphicon-log-out"></span> Deconnexion</a></li>
+            {% endif %}
+
+
+          </ul>
+        </div>
+      </nav>
+
+      {% endblock %}
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-md-1">
+      </div>
+      <div  class="col-md-10">
+        {% block content %}
+
+        {% endblock %}
+      </div>
+      <div class="col-md-1">
+      </div>
+    </div>
+
+
+
+
+    <!-- <footer>
+    {% block footer %}
+    <div class="footer" id="footer">
+    <div class="container">
+    <div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <i class="fa fa-map-marker fa-2x info" aria-hidden="true"></i><br/> TEXTE
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 ">
+  <i class="fa fa-envelope fa-2x info" aria-hidden="true"></i><br/>TEXTE
+</div>
+<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 ">
+<i class="fa fa-phone fa-2x info" aria-hidden="true"></i><br/>TEXTE
+</div>
+<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+<ul class="social">
+<li>
+<a href="#"> <i class="fa fa-facebook"> </i> </a>
+</li>
+<li>
+<a href="#"> <i class="fa fa-twitter">   </i> </a>
+</li>
+<li>
+<a href="#"> <i class="fa fa-google-plus">   </i> </a>
+</li>
+<li>
+<a href="#"> <i class="fa fa-pinterest">   </i> </a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+{% endblock %}
+</div>
+
+
+
+
+
+<div class="footer-bottom">
+{% block footerbottom %}
+<div class="container">
+<p class="text-center"> Copyright @MIRANDE-MARTIN. All right reserved. </p>
+</div>
+{% endblock %}
+</div>
+
+</footer> -->
+
+​</body>
+
+</html>

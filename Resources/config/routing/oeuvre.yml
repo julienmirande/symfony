@@ -1,0 +1,29 @@
+oeuvre_index:
+    path:     /
+    defaults: { _controller: "MonBundle:Oeuvre:index" }
+    methods:  GET
+
+oeuvre_show:
+    path:     /{codeOeuvre}/show
+    defaults: { _controller: "MonBundle:Oeuvre:show" }
+    methods:  GET
+
+oeuvre_new:
+    path:     /new
+    defaults: { _controller: "MonBundle:Oeuvre:new" }
+    methods:  [GET, POST]
+
+oeuvre_edit:
+    path:     /{codeOeuvre}/edit
+    defaults: { _controller: "MonBundle:Oeuvre:edit" }
+    methods:  [GET, POST]
+
+oeuvre_delete:
+    path:     /{codeOeuvre}/delete
+    defaults: { _controller: "MonBundle:Oeuvre:delete" }
+    methods:  DELETE
+
+Oeuvres:
+    path:     /{letter}
+    defaults: { _controller: "MonBundle:Oeuvre:alphabet" }
+    methods:  GET

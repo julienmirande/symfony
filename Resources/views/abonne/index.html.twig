@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Abonnes list</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Nom</th>
+                <th>Prenomabonne</th>
+                <th>Email</th>
+                <th>Login</th>
+                <th>Password</th>
+                <th>Adresse</th>
+                <th>Ville</th>
+                <th>Codepostal</th>
+                <th>Credit</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for abonne in abonnes %}
+            <tr>
+                <td><a href="{{ path('abonne_show', { 'codeAbonne': abonne.codeAbonne }) }}">{{ abonne.codeAbonne }}</a></td>
+                <td>{{ abonne.nomAbonne }}</td>
+                <td>{{ abonne.prenomAbonne }}</td>
+                <td>{{ abonne.email }}</td>
+                <td>{{ abonne.login }}</td>
+                <td>{{ abonne.password }}</td>
+                <td>{{ abonne.adresse }}</td>
+                <td>{{ abonne.ville }}</td>
+                <td>{{ abonne.codePostal }}</td>
+                <td>{{ abonne.credit }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('abonne_show', { 'codeAbonne': abonne.codeAbonne }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('abonne_edit', { 'codeAbonne': abonne.codeAbonne }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('abonne_new') }}">Create a new abonne</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,4 @@
+#services:
+#    mon.example:
+#        class: MonBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

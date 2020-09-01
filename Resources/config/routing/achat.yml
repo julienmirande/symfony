@@ -1,0 +1,41 @@
+Achat_deleteAll:
+    path:     /deleteAll
+    defaults: { _controller: "MonBundle:Achat:removeAllPanier" }
+    methods:  [GET, POST, DELETE ]
+
+
+Achat_index:
+    path:     /
+    defaults: { _controller: "MonBundle:Achat:index" }
+    methods:  GET
+
+Achat_show:
+    path:     /{codeAchat}/show
+    defaults: { _controller: "MonBundle:Achat:show" }
+    methods:  GET
+
+Achat_new:
+    path:     /{codeEnregistrement}/{codeAlbum}
+    defaults: { _controller: "MonBundle:Achat:addPanier" }
+    methods:  [GET, POST]
+
+Achat_All:
+    path:     /{codeDisque}/{codeAlbum}/all
+    defaults: { _controller: "MonBundle:Achat:addAllPanier" }
+    methods:  [GET, POST]
+
+
+Achat_edit:
+    path:     /{codeAchat}/edit
+    defaults: { _controller: "MonBundle:Achat:edit" }
+    methods:  [GET, POST]
+
+Achat_valider:
+    path:     /valider
+    defaults: { _controller: "MonBundle:Achat:valider" }
+    methods:  [GET, POST]
+
+Achat_delete:
+    path:     /{codeAchat}/delete
+    defaults: { _controller: "MonBundle:Achat:removePanier" }
+    methods:  [GET, POST, DELETE ]

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<h1>Edition abonne</h1>
+
+{{ form_start(edit_form) }}
+{{ form_widget(edit_form) }}
+
+<form action="{{ path('abonne_show', { 'codeAbonne': abonne.codeAbonne }) }}">
+  <input type="submit" value="Valider" class="btn btn-primary btn-lg" />
+</form>
+
+{{ form_end(edit_form) }}
+
+
+    <form action="{{ path('abonne_index') }}">
+      <input type="submit" value="Retour" class="btn btn-primary btn-lg" />
+    </form>
+
+
+    {{ form_start(delete_form) }}
+    <input type="submit" value="Supprimer" class="btn btn-primary btn-lg">
+    {{ form_end(delete_form) }}
+
+{% endblock %}

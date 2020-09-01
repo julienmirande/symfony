@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+
+  {% for item in xml.Items.Item %}
+
+    <p><h1>{{item.ItemAttributes.Title}}</h1></p>
+    <div class="row">
+      <div  class="col-md-4">
+      {% if item.MediumImage is defined %}
+
+      {% if item.MediumImage.DetailPageURL is defined %}
+        <a target="_blank" href='{{item.MediumImage.DetailPageURL}}'>
+          {% endif %}
+          <img src='{{item.MediumImage.URL}}' width='{{item.MediumImage.Width}}' height='{{item.MediumImage.Height}}'/></a>
+          {% else %}
+      <img src="{{ path('demo_photo',{'code':  album.codeAlbum, 'classe':'Album' })}}" alt="PAS DE PHOTO" width="150" height="150" /></img>
+      {% endif %}
+        </div>
+
+      <div  class="col-md-4">
+        <b>Prix: </b>{% if item.OfferSummary.LowestUsedPrice.FormattedPrice is defined %} {{item.OfferSummary.LowestUsedPrice.FormattedPrice}} {% else %} non renseigné {% endif %}
+      </div>
+
+      <div  class="col-md-4">
+        <b>  Type: </b>{% if item.ItemAttributes.Binding is defined %} {{item.ItemAttributes.Binding}} {% else %} non renseigné {% endif %}
+      </div>
+
+      <div  class="col-md-4">
+      <b>  Durée:</b> {% if ItemAttributes.RunningTime is defined %} {{ItemAttributes.RunningTime}} {% else %} non renseigné {% endif %}
+      </div>
+
+      <div  class="col-md-4">
+      <b> Studio: </b> {% if item.ItemAttributes.Studio is defined %} {{ item.ItemAttributes.Studio}} {% else %} non renseigné {% endif %}
+      </div>
+
+      <div  class="col-md-4">
+        <b> Date: </b>{% if item.ItemAttributes.ReleaseDate is defined %} {{item.ItemAttributes.ReleaseDate}} {% else %} non renseigné {% endif %}
+      </div>
+
+      <div  class="col-md-4">
+      <b>  Marque: </b>{% if item.ItemAttributes.Brand is defined %} {{item.ItemAttributes.Brand}} {% else %} non renseigné {% endif %}
+      </div>
+      </div>
+
+
+  {% for disque in disques %}
+    {% if (disque.referenceDisque == "          ") %}
+    <h2> Contenu </h2>
+    {% else %}
+    <h2> {{disque.referenceDisque}}</h2>
+    {% endif %}
+  {% for enregistrement in disque.enregistrements %}
+    <div class="row">
+      <div  class="col-md-4">
+
+        {{ enregistrement.titre }} ({{ enregistrement.duree }})
+      </div>
+      <div class="col-md-4" >
+        <audio controls="controls" preload="none">
+          <source src="{{ path('demo_son',{'code':  album.codeAlbum,'codeMorceau':  enregistrement.codeMorceau, 'classe':'Enregistrement' })}}" type="audio/mpeg"  />
+          <source src="{{ path('demo_son',{'code':  album.codeAlbum,'codeMorceau':  enregistrement.codeMorceau, 'classe':'Enregistrement' })}}" type="audio/ogg; codecs=opus" />
+          <source src="{{ path('demo_son',{'code':  album.codeAlbum,'codeMorceau':  enregistrement.codeMorceau, 'classe':'Enregistrement' })}}" type="audio/opus; codecs=vorbis" />
+          Pas de son pour ce navigateur
+        </audio>
+      </div>
+      <div class="col-md-4">
+        <form method="get" action="{{ path('Achat_new',{'codeEnregistrement':  enregistrement.codeMorceau,'codeAlbum': album.codeAlbum})}}">
+          <button class="btn btn-warning" style="width=30%"><span class="glyphicon  glyphicon-shopping-cart" ></span> Ajouter au panier</button>
+        </form>
+      </div>
+</div>
+
+        {% endfor %}
+
+        <form method="get" action="{{ path('Achat_All',{'codeDisque':  disque.codeDisque,'codeAlbum':album.codeAlbum})}}">
+          <button class="btn btn-warning" style="width=30%"><span class="glyphicon  glyphicon-shopping-cart" ></span> Ajouter le disque</button>
+        </form>
+
+        {% endfor %}
+
+{% endfor %}
+
+<div>
+  <a href="{{ path('album_index') }}">Retour</a>
+</div>
+
+{% endblock %}

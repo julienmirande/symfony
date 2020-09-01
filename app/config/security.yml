@@ -1,0 +1,47 @@
+# app/config/security.yml
+security:
+    encoders:
+        MonBundle\Entity\Abonne: plaintext
+        Symfony\Component\Security\Core\User\User: plaintext
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+    providers:
+        user_db:
+            entity:
+                class: MonBundle\Entity\Abonne
+                property: login
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            pattern: ^/
+            provider : user_db
+            form_login:
+                check_path: login
+                login_path: login
+                username_parameter: _login
+                password_parameter: _password
+            access_denied_handler: MonBundle\AccessDeniedHandler
+            remember_me:
+                secret:   '%secret%'
+                lifetime: 604800 # 1 week in seconds
+                path:     /
+
+            logout:
+                path:   logout
+                target: /Accueil
+            anonymous: true
+            # guard:
+            #     authenticators:
+            #         - app.security.login_form_authenticator
+
+
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN   }
+        - { path: ^/Musicien/, roles: ROLE_USER   }
+        - { path: ^/Abonne/, roles: IS_AUTHENTICATED_ANONYMOUSLY  }
+        - { path: ^/Abonne/, roles: ROLE_USER   }
+        - { path: ^/Albums/, roles: ROLE_USER   }

@@ -1,0 +1,29 @@
+instrument_index:
+    path:     /
+    defaults: { _controller: "MonBundle:Instrument:index" }
+    methods:  GET
+
+instrument_show:
+    path:     /{codeInstrument}/show
+    defaults: { _controller: "MonBundle:Instrument:show" }
+    methods:  GET
+
+instrument_new:
+    path:     /new
+    defaults: { _controller: "MonBundle:Instrument:new" }
+    methods:  [GET, POST]
+
+instrument_edit:
+    path:     /{codeInstrument}/edit
+    defaults: { _controller: "MonBundle:Instrument:edit" }
+    methods:  [GET, POST]
+
+instrument_delete:
+    path:     /{codeInstrument}/delete
+    defaults: { _controller: "MonBundle:Instrument:delete" }
+    methods:  DELETE
+
+Instruments:
+    path:     /{letter}
+    defaults: { _controller: "MonBundle:Instrument:alphabet" }
+    methods:  GET

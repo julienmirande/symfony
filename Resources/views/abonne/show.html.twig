@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Abonne</h1>
+
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>Code</th>
+                <td>{{ abonne.codeAbonne }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ abonne.nomAbonne }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ abonne.prenomAbonne }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ abonne.email }}</td>
+            </tr>
+            <tr>
+                <th>Login</th>
+                <td>{{ abonne.login }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ abonne.password }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ abonne.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ abonne.ville }}</td>
+            </tr>
+            <tr>
+                <th>Codepostal</th>
+                <td>{{ abonne.codePostal }}</td>
+            </tr>
+
+            <tr>
+                <th>Credit</th>
+                <td>{{ abonne.credit }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <ul>
+          <form action="{{ path('abonne_index') }}">
+            <input type="submit" value="Retour" class="btn btn-primary btn-lg" />
+          </form>
+    </ul>
+
+    <ul>
+          <form action="{{ path('abonne_edit', { 'codeAbonne': abonne.codeAbonne }) }}">
+            <input type="submit" value="Edit" class="btn btn-primary btn-lg" />
+          </form>
+          </ul>
+{% endblock %}

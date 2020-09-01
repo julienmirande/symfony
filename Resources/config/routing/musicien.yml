@@ -1,0 +1,46 @@
+musicien_index:
+    path:     /
+    defaults: { _controller: "MonBundle:Musicien:index" }
+    methods:  GET
+
+musicien_show:
+    path:     /{codeMusicien}/show
+    defaults: { _controller: "MonBundle:Musicien:show" }
+    methods:  GET
+
+musicien_new:
+    path:     /new
+    defaults: { _controller: "MonBundle:Musicien:new" }
+    methods:  [GET, POST]
+
+musicien_edit:
+    path:     /{codeMusicien}/edit
+    defaults: { _controller: "MonBundle:Musicien:edit" }
+    methods:  [GET, POST]
+
+musicien_delete:
+    path:     /{codeMusicien}/delete
+    defaults: { _controller: "MonBundle:Musicien:delete" }
+    methods:  DELETE
+
+Musicien:
+    path:     /{letter}
+    defaults: { _controller: "MonBundle:Musicien:alphabet" }
+    methods:  GET
+
+demo_photo:
+    path:     /{code}/show/photo/{classe}}
+    defaults: { _controller: "MonBundle:Musicien:photo" }
+    methods:  GET
+
+
+show_album:
+    path:     /{code}/show/{codeAlbum}
+    defaults: { _controller: "MonBundle:Musicien:enregistrement" }
+    methods:  GET
+
+
+demo_son:
+    path:     /{code}/show/{codeMorceau}/{classe}
+    defaults: { _controller: "MonBundle:Musicien:son" }
+    methods:  GET

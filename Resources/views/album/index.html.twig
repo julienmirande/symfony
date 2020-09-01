@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Liste des albums</h1>
+
+    <div>
+      Rechercher par :
+      {% for letter in alphabet %}
+      <a href="{{letter}}">{{letter}}</a>
+      {% endfor %}
+      <a href="{{ path('album_index')}}">Tout</a>
+      <div> <br><br>
+
+
+        {% for album in albums %}
+        <div class="responsive">
+
+          <a style="margin:10px;" href="{{ path('album_show',{'codeAlbum':  album.codeAlbum })}}">
+            <img  src="{{ path('demo_photo',{'code':  album.codeAlbum, 'classe':'Album' })}}" alt="Fjords" width="100" height="100">
+          </a>
+          <div >{{ album.titreAlbum }} </div>
+
+
+      </div>
+
+        {% endfor %}
+
+
+
+        <!-- {% for album in albums %}
+
+        <div class="responsive">
+
+          <a style="margin:10px;" href="{{ path('album_show',{'codeAlbum':  album.codeAlbum })}}">
+            <img  src="{{ path('demo_photo',{'code':   album.codeAlbum, 'classe':'Album' })}}" width="100" height="100">
+          </a>
+          <div >{{ album.titreAlbum }} </br>({{ album.anneeAlbum }})</div>
+        </div>
+
+        {% endfor %} -->
+
+{% endblock %}

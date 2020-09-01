@@ -1,0 +1,55 @@
+mon_homepage:
+    path:     /
+    defaults: { _controller: MonBundle:Default:index }
+
+mon_admin:
+    path:     /admin
+
+
+mon_accueil:
+    path:     /Accueil
+    defaults: { _controller: MonBundle:Navigation:accueil }
+
+mon_inscription:
+    path:     /Inscription
+    defaults: { _controller: MonBundle:Inscription:inscription }
+
+mon_apropos:
+    path:     /Apropos
+    defaults: { _controller: MonBundle:Navigation:apropos }
+
+mon_musicien:
+    resource:     "@MonBundle/Resources/config/routing/musicien.yml"
+    prefix: /Musicien
+
+mon_orchestre:
+    resource:     "@MonBundle/Resources/config/routing/orchestres.yml"
+    prefix: /Orchestres
+
+mon_oeuvre:
+        resource: "@MonBundle/Resources/config/routing/oeuvre.yml"
+        prefix: /Oeuvres
+
+mon_album:
+        resource: "@MonBundle/Resources/config/routing/album.yml"
+        prefix: /Albums
+
+
+mon_instrument:
+        resource: "@MonBundle/Resources/config/routing/instrument.yml"
+        prefix: /Instruments
+
+mon_abonne:
+    resource:     "@MonBundle/Resources/config/routing/abonne.yml"
+    prefix: /Abonne
+
+mon_Achat:
+    resource: "@MonBundle/Resources/config/routing/achat.yml"
+    prefix:   /Achat
+
+login:
+    path:     /Connexion
+    defaults: { _controller: MonBundle:Abonne:login }
+
+logout:
+    path:   /logout

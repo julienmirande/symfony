@@ -1,0 +1,29 @@
+album_index:
+    path:     /
+    defaults: { _controller: "MonBundle:Album:index" }
+    methods:  GET
+
+album_show:
+    path:     /{codeAlbum}/show
+    defaults: { _controller: "MonBundle:Album:show" }
+    methods:  GET
+
+album_new:
+    path:     /new
+    defaults: { _controller: "MonBundle:Album:new" }
+    methods:  [GET, POST]
+
+album_edit:
+    path:     /{codeAlbum}/edit
+    defaults: { _controller: "MonBundle:Album:edit" }
+    methods:  [GET, POST]
+
+album_delete:
+    path:     /{codeAlbum}/delete
+    defaults: { _controller: "MonBundle:Album:delete" }
+    methods:  DELETE
+
+Albums:
+    path:     /{letter}
+    defaults: { _controller: "MonBundle:Album:alphabet" }
+    methods:  GET

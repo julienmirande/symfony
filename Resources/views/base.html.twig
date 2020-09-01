@@ -1,0 +1,119 @@
+{% set alphabet = ['A','B','C','D','E','F','G','H','I','G','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'] %}
+{% set rubrique = ['Musicien','Compositeur','Oeuvres','Instruments'] %}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>
+    {% block title %}Projet{% endblock %}
+  </title>
+
+  {% block stylesheets %}
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ asset('bundles/mon/css/mystyle.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('bundles/bmatznerfontawesome/css/font-awesome.min.css') }}" />
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+  {% endblock %}
+</head>
+
+<body>
+
+  <div class="header">
+  {% block header %}
+    <ul id="menu">
+      <li><a href="/Accueil">Accueil</a></li>
+      <li>
+        <a href="#">Liste alphabétique</a>
+        <ul >
+          {% for type in rubrique %}
+          <li>
+            <a href="#">{{type}}</a>
+            <ul>
+              {% for letter in alphabet %}
+              <li><a href="#">{{letter}}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+          {% endfor %}
+        </ul>
+      </li>
+      <li><a href="#">Work</a></li>
+      <li><a href="/Apropos">A propos</a></li>
+      <li><a href="/Connexion" >Se connecter</a></li>
+      <li><a href="/Inscription">S'inscrire</a></li>
+    </ul>
+  </ul>
+  {% endblock %}
+</div>
+
+
+
+<div class="container block">
+  {% block content %}
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-8 col-xs-8 pull-left ">
+      <p class=" text-justify presentation lead">
+        yt
+      </p>
+    </div>
+  </div>
+  {% endblock %}
+</div>
+
+
+
+
+<footer>
+  {% block footer %}
+  <div class="footer" id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+          <i class="fa fa-map-marker fa-2x info" aria-hidden="true"></i><br/> TEXTE
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 ">
+          <i class="fa fa-envelope fa-2x info" aria-hidden="true"></i><br/>TEXTE
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 ">
+          <i class="fa fa-phone fa-2x info" aria-hidden="true"></i><br/>TEXTE
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+          <ul class="social">
+            <li>
+              <a href="#"> <i class="fa fa-facebook"> <img src="facebook.png" alt="" > </i> </a>
+            </li>
+            <li>
+              <a href="#"> <i class="fa fa-twitter">   </i> </a>
+            </li>
+            <li>
+              <a href="#"> <i class="fa fa-google-plus">   </i> </a>
+            </li>
+            <li>
+              <a href="#"> <i class="fa fa-pinterest">   </i> </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    {% endblock %}
+  </div>
+
+
+
+
+
+  <div class="footer-bottom">
+    {% block footerbottom %}
+    <div class="container">
+      <p class="text-center"> Copyright @MIRANDE-MARTIN. All right reserved. </p>
+    </div>
+    {% endblock %}
+  </div>
+
+</footer>
+​</body>
+
+</html>

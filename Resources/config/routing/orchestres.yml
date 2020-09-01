@@ -1,0 +1,29 @@
+orchestres_index:
+    path:     /
+    defaults: { _controller: "MonBundle:Orchestres:index" }
+    methods:  GET
+
+orchestres_show:
+    path:     /{codeOrchestre}/show
+    defaults: { _controller: "MonBundle:Orchestres:show" }
+    methods:  GET
+
+orchestres_new:
+    path:     /new
+    defaults: { _controller: "MonBundle:Orchestres:new" }
+    methods:  [GET, POST]
+
+orchestres_edit:
+    path:     /{codeOrchestre}/edit
+    defaults: { _controller: "MonBundle:Orchestres:edit" }
+    methods:  [GET, POST]
+
+orchestres_delete:
+    path:     /{codeOrchestre}/delete
+    defaults: { _controller: "MonBundle:Orchestres:delete" }
+    methods:  DELETE
+
+Orchestres:
+    path:     /{letter}
+    defaults: { _controller: "MonBundle:Orchestres:alphabet" }
+    methods:  GET

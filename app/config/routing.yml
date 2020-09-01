@@ -1,0 +1,11 @@
+mon_orchestres:
+    resource: "@MonBundle/Controller/OrchestresController.php"
+    type:     annotation
+
+mon:
+    resource: "@MonBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
